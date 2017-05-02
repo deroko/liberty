@@ -149,7 +149,7 @@ Root obtained           <--- apprently when this happened code would connect to 
 ```
 And then we get `No ssh access`. At this point I thought that they want to connect to my machine,
 so I had to dump these chunks too. Note that these chunks are AES encrypted so you can't see
-them in wireshark. Dumped chunk reveled that code was checking if there are `/root/.ssh` and
+them in wireshark. Dumped chunk revealed that code was checking if there are `/root/.ssh` and
 `/root/.ssh/authorized_keys`. Added 2 files and there we go for next check which tells me that
 I'm not hacker as I'm missing debugger, looking at the chunk reveals that code is performing:
  `ls /home/*/ida*/ida.key /opt/ida*/ida.key 2>/dev/null`
@@ -185,7 +185,7 @@ cgc-docs       finals-2013  LegitBS     public      quals-2015  scorebot
 choripan       finals-2014  liberty     quals-2013  quals-2016  website
 ctf-registrar  fritas       medianoche  quals-2014  repo        webste
 ```
-LegitBS and liberty I've added on my own, they didn't ask for them. After that code tries to
+`LegitBS` and `liberty` I've added on my own, they didn't ask for them. After that code tries to
 locate many packages using dpkg -s <packagename>. All these chunks are same but some strings
 I remember are `dpkg -s nasm`, `dpkg -s yasm`, `dpkg -s arj`, `dpkg -s git`, `dpkg -s build-essentials`
 and many more libraries like libncurses, libdwarf etc... List was huge so instead of installing
@@ -203,10 +203,10 @@ over docs to see what can be done to match 4.11.0 kernel, and I gave up. I took 
 kernel.org and installed them on Ubuntu. Now I had 4.11.0-rc5 (at 1st I used rc8) kernel and was ready
 for this game. Of course due to the uname -r printing `4.11.0-041100rc5-generic` they would say
 `Not close enough` as apprently they expected 4.11.0-rc5 or 8. They also checked 2 more paths for
-kernel 4.11 but as now I had 4.11 I didn't care of them, nor I dumped these 2 chunks. Only thing which
+kernel 4.11 but as now I had 4.11 I didn't care, nor I dumped these 2 chunks. Only thing which
 I had to properly alter was uname and it's source code is available in git.
 
-After this what happens is upload of LKM source (well not really source) but 4 .o files and Makefile
+After this, what happens is upload of LKM source (well not really source) but 4 .o files and Makefile
 in `/tmp/lightning_defcon_2017`
 
 If LKM is properly compiled it will be loaded into kernel and will expose `/dev/decfon_2017` device.
@@ -455,7 +455,7 @@ We get:
 **The flag is: Wouldn't you like to be a pepper too?**
 
 If you wonder how all debugging was done, it was done using gdb and vmware, and if you
-want to test these keys agains LKM, make sure to patch .ko FlagData with one provided 
+want to test these keys against LKM, make sure to patch .ko FlagData with one provided 
 in this readme.
 
 
