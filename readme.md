@@ -44,14 +44,14 @@ read data from socket to this memory and execute it:
 .text:00000927                 mov     [ebp+var_1070], edx
 .text:0000092D                 call    dword ptr [ebp-1028h]
 ```
-result from executed code will be sent to remote server.
+result from executed code will be sent to the remote server.
 
 Liberty server also has timing, so if you are debugging, or request takes 
 too much time to execute, it will always send back invalid data, and client
 will exit, so debugging wasn't an option. 
 
 1st check we encounter is if we are running in debugger, process will fork
-and child will try to ptrace parent, on default Ubuntu this would fail, also
+and child will try to ptrace parent. On default Ubuntu this would fail, also
 it would fail if process is already ptraced. On ubuntu problem comes from Yama
 so we need to alter  `/proc/sys/kernel/yama/ptrace_scope` to allow ptrace.
 
@@ -174,7 +174,7 @@ except:
 If 0 was returned it would say old python, so I patched `string.py/class Formatter format()` to
 `return "1" if format_string='{a}'`
 
-After this they would go and check if certain files are present in `~/legitbs_ctf2017_withlovefromlightning`
+After this they would check if certain files are present in `~/legitbs_ctf2017_withlovefromlightning`
 using this command:
 `ls ~/legitbs_ctf2017_withlovefromlightning -A1F | grep /`
 
@@ -209,7 +209,7 @@ I had to properly alter was uname and it's source code is available in git.
 After this what happens is upload of LKM source (well not really source) but 4 .o files and Makefile
 in `/tmp/lightning_defcon_2017`
 
-If device is properly compiled it will be loaded into kernel and will expose `/dev/decfon_2017` device.
+If LKM is properly compiled it will be loaded into kernel and will expose `/dev/decfon_2017` device.
 
 3 more chunks are coming:
 1. delete lkm source
