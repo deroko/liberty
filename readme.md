@@ -158,7 +158,7 @@ Then comes check for kernel version (or it was before IDA), which runs:
 ```
 uname -r 
 ```
-After a bit of expermineting with patched uname it runed out that they wanted latest kernel,
+After a bit of expermineting with patched uname it turned out that they wanted latest kernel,
 so I patched uname to spit out `4.11.0-rc8` and they were happy. If I used `4.11.0-041100rc8-generic`
 they would say `Not close enough` or similar message. 
 
